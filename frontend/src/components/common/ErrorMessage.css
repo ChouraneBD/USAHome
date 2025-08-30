@@ -1,0 +1,94 @@
+/* Error Message Component Styles */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  background: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.error-title {
+  color: #e53e3e;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.error-message {
+  color: #744210;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  max-width: 500px;
+}
+
+.retry-button {
+  background: #ff6b35;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.retry-button:hover {
+  background: #e55a2b;
+  transform: translateY(-2px);
+}
+
+.retry-button:active {
+  transform: translateY(0);
+}
+
+/* Compact error message */
+.error-container.compact {
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.error-container.compact .error-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.error-container.compact .error-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.error-container.compact .error-message {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Inline error message */
+.error-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background: #fed7d7;
+  border: 1px solid #e53e3e;
+  border-radius: 6px;
+  color: #e53e3e;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.error-inline .error-icon {
+  font-size: 16px;
+  margin: 0;
+}
