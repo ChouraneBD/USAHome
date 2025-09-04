@@ -136,8 +136,8 @@ const ServicesList = () => {
                     </span>
                   </td>
                   <td>
-                    <span className="type">
-                      {service.type?.nom || 'Non typé'}
+                    <span className="service-type">
+                      {service.type?.name || 'Non typé'}
                     </span>
                   </td>
                   <td>

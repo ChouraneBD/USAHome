@@ -35,7 +35,7 @@ class ServiceController extends Controller
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
             'prix' => 'nullable|numeric|min:0',
-            'type_id' => 'required|exists:type_services,id',
+            'type_id' => 'nullable|exists:service_types,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -51,6 +51,8 @@ class ServiceController extends Controller
                 $imagePath = $request->file('image')->store('services', 'public');
                 $data['image'] = $imagePath;
             }
+
+            // type_id is now optional and nullable
 
             $service = Service::create($data);
 
@@ -94,7 +96,7 @@ class ServiceController extends Controller
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
             'prix' => 'nullable|numeric|min:0',
-            'type_id' => 'required|exists:type_services,id',
+            'type_id' => 'nullable|exists:service_types,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -116,6 +118,8 @@ class ServiceController extends Controller
                 $imagePath = $request->file('image')->store('services', 'public');
                 $data['image'] = $imagePath;
             }
+
+            // type_id is now optional and nullable
 
             $service->update($data);
 

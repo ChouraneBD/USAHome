@@ -37,12 +37,33 @@ export default function Accueil() {
     }
   }, [allProducts]);
 
-  const handleContactSubmit = (e) => {
+  const handleContactSubmit = async (e) => {
     e.preventDefault();
-    // Handle contact form submission
-    console.log('Contact form submitted:', contactForm);
-    alert('Message envoyé avec succès!');
-    setContactForm({ nom: '', email: '', objet: '', message: '' });
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/devis', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...contactForm,
+          type_devis: 'service' // Default for accueil page
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        alert(data.message || 'Message envoyé avec succès!');
+        setContactForm({ nom: '', email: '', objet: '', message: '' });
+      } else {
+        alert(data.message || 'Une erreur est survenue lors de l\'envoi de votre message.');
+      }
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      alert('Une erreur est survenue. Veuillez réessayer.');
+    }
   };
 
   const handleInputChange = (e) => {
@@ -58,7 +79,8 @@ export default function Accueil() {
         {`
           /* Modern Card Styles with Enhanced Colors */
           .modern-service-card, .modern-product-card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
             border-radius: 24px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.08);
             overflow: hidden;
@@ -66,7 +88,7 @@ export default function Accueil() {
             height: 420px;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
             position: relative;
           }
 
@@ -218,18 +240,19 @@ export default function Accueil() {
           }
 
           .modern-card-button {
-            background: linear-gradient(135deg, #7c3aed, #4c1d95);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 14px;
+            padding: 16px 38px;
+            border-radius: 8px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
           }
 
           .modern-card-button::before {
@@ -249,16 +272,16 @@ export default function Accueil() {
 
           .modern-card-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
           }
 
           .modern-product-card .modern-card-button {
-            background: linear-gradient(135deg, #1e40af, #1e3a8a);
-            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
           }
 
           .modern-product-card .modern-card-button:hover {
-            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
           }
 
           /* Grid Layout */

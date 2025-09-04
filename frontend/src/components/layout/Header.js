@@ -1,9 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 import { getLogoImage } from '../../utils/imageUtils';
 import './Header.css';
 
 const Header = () => {
+  const { user, isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -17,10 +30,19 @@ const Header = () => {
           <Link to="/services" className="nav-link">Services</Link>
           <Link to="/products" className="nav-link">Produits</Link>
           <Link to="/contact" className="nav-link">Contact</Link>
-          <div className="admin-links">
-            <Link to="/admin/produits" className="nav-link admin-link">Gestion Produits</Link>
-            <Link to="/admin/services" className="nav-link admin-link">Gestion Services</Link>
-          </div>
+
+          {isAuthenticated ? (
+            <div className="auth-section">
+              <span className="user-greeting">Hello, {user?.name}</span>
+              <Link to="/admin/dashboard" className="nav-link admin-link">Dashboard</Link>
+              <button onClick={handleLogout} className="logout-button">Logout</button>
+            </div>
+          ) : (
+            <div className="auth-section">
+              <Link to="/login" className="nav-link">Login</Link>
+              <Link to="/register" className="nav-link register-link">Sign Up</Link>
+            </div>
+          )}
         </nav>
         <button className="cta-button">APPELEZ-NOUS</button>
       </div>

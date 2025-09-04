@@ -50,16 +50,6 @@ class ServiceService {
       throw error;
     }
   }
-
-  // Get service types
-  async getServiceTypes() {
-    try {
-      return await ApiService.get('/types-services');
-    } catch (error) {
-      console.error('Error fetching service types:', error);
-      throw error;
-    }
-  }
 }
 
 export default new ServiceService();

@@ -78,7 +78,7 @@
 }
 
 .nav a:hover {
-  color: #ff6b35;
+  color: #667eea;
 }
 
 .nav a:hover::after {
@@ -329,7 +329,7 @@
 }
 
 .services-section h3 {
-  color: #ff6b35;
+  color: #667eea;
   font-size: 14px;
   margin-bottom: 10px;
   letter-spacing: 1px;
@@ -443,7 +443,7 @@
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
-  color: #ff6b35;
+  color: #667eea;
   background: rgba(255,255,255,0.9);
   padding: 4px 8px;
   border-radius: 6px;
@@ -452,7 +452,7 @@
 
 .service-overlay .category {
   display: inline-block;
-  background: rgba(255,107,53,0.8);
+  background: rgba(102,126,234,0.8);
   color: white;
   padding: 4px 12px;
   border-radius: 15px;
@@ -495,31 +495,35 @@
   content: '✓';
   position: absolute;
   left: 0;
-  color: #ff6b35;
+  color: #667eea;
   font-weight: bold;
 }
 
 .service-card-back .service-price {
-  color: #ff6b35;
+  color: #667eea;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
 .service-card-back .service-button {
-  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 14px;
+  padding: 16px 38px;
+  border-radius: 8px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  display: inline-block;
+  text-align: center;
 }
 
 .service-card-back .service-button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
 }
 
 /* Default service card backgrounds */
@@ -550,7 +554,7 @@
 }
 
 .products-section h3 {
-  color: #ff6b35;
+  color: #667eea;
   font-size: 14px;
   margin-bottom: 10px;
   letter-spacing: 1px;
@@ -660,7 +664,7 @@
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
-  color: #ff6b35;
+  color: #667eea;
   background: rgba(255,255,255,0.9);
   padding: 4px 8px;
   border-radius: 6px;
@@ -669,7 +673,7 @@
 
 .product-overlay .category {
   display: inline-block;
-  background: rgba(255,107,53,0.8);
+  background: rgba(102,126,234,0.8);
   color: white;
   padding: 4px 12px;
   border-radius: 15px;
@@ -712,31 +716,35 @@
   content: '•';
   position: absolute;
   left: 0;
-  color: #ff6b35;
+  color: #667eea;
   font-weight: bold;
 }
 
 .product-card-back .product-price {
-  color: #ff6b35;
+  color: #667eea;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
 .product-card-back .product-button {
-  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 14px;
+  padding: 16px 38px;
+  border-radius: 8px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  display: inline-block;
+  text-align: center;
 }
 
 .product-card-back .product-button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
 }
 
 /* Default product card backgrounds */

@@ -12,9 +12,13 @@ class ApiService {
     // Don't set Content-Type for FormData - let browser handle it
     const isFormData = options.body instanceof FormData;
 
+    // Get auth token from localStorage
+    const token = localStorage.getItem('auth_token');
+
     const config = {
       headers: {
         ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
+        ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
         ...options.headers,
       },
       ...options,

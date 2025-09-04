@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useServiceTypes } from '../../hooks/useServices';
+import { useServiceTypes } from '../../hooks/useServiceTypes';
 import Loading from '../common/Loading';
 import ErrorMessage from '../common/ErrorMessage';
 import './ServiceForm.css';
@@ -29,6 +29,15 @@ const ServiceForm = ({
         type_id: service.type_id || '',
         image: null
       });
+    } else {
+      // Reset form for new service
+      setFormData({
+        nom: '',
+        description: '',
+        prix: '',
+        type_id: '',
+        image: null
+      });
     }
   }, [service]);
 
@@ -42,10 +51,14 @@ const ServiceForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Create FormData for file upload
     const submitData = new FormData();
     Object.keys(formData).forEach(key => {
+      // Don't include type_id if it's empty
+      if (key === 'type_id' && (formData[key] === '' || formData[key] === null)) {
+        return; // Skip empty type_id
+      }
       if (formData[key] !== null && formData[key] !== '') {
         submitData.append(key, formData[key]);
       }
@@ -111,21 +124,23 @@ const ServiceForm = ({
           </div>
 
           <div className="form-group">
-            <label htmlFor="type_id">Type de service *</label>
+            <label htmlFor="type_id">Type de service (optionnel)</label>
             <select
               id="type_id"
               name="type_id"
               value={formData.type_id}
               onChange={handleChange}
-              required
             >
-              <option value="">Sélectionnez un type</option>
+              <option value="">Aucun type sélectionné</option>
               {serviceTypes.map(type => (
                 <option key={type.id} value={type.id}>
-                  {type.nom}
+                  {type.name}
                 </option>
               ))}
             </select>
+            <small className="form-help">
+              Vous pouvez créer des types de services dans la section "Types de services"
+            </small>
           </div>
         </div>
 

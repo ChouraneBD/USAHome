@@ -16,11 +16,8 @@ return new class extends Migration
             $table->string('nom');
             $table->text('description');
             $table->decimal('prix', 10, 2)->nullable();
-            $table->unsignedBigInteger('type_id');
             $table->string('image')->nullable();
             $table->timestamps();
-
-            $table->foreign('type_id')->references('id')->on('type_services')->onDelete('cascade');
         });
     }
 

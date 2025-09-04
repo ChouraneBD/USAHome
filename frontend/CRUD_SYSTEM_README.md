@@ -24,7 +24,14 @@ src/pages/admin/
 │   ├── ServicesList.css        # Table styling
 │   ├── ServiceForm.css         # Form styling (shared)
 │   └── ServiceView.css         # View page styling
-├── categories/                  # Categories CRUD (future)
+├── categories/                  # Categories CRUD
+│   ├── CategoriesList.js       # List/Table view with search & sort
+│   ├── CategoryCreate.js       # Create new category form
+│   ├── CategoryEdit.js         # Edit existing category form
+│   ├── CategoryView.js         # View category details
+│   ├── CategoriesList.css      # Table styling
+│   ├── CategoryForm.css        # Form styling (shared)
+│   └── CategoryView.css        # View page styling
 └── types-services/             # Service Types CRUD (future)
 ```
 
@@ -104,6 +111,37 @@ src/pages/admin/
   - Professional service card layout
   - Quick actions (Edit, Delete)
 
+### Categories Management (`/admin/categories`)
+
+#### 1. **List Categories** - `/admin/categories`
+- **Features:**
+  - Sortable table with columns: Name, Date
+  - Real-time search functionality
+  - Statistics display (total categories)
+  - Responsive table design
+  - Action buttons: View, Edit, Delete
+  - Empty state handling
+
+#### 2. **Create Category** - `/admin/categories/create`
+- **Features:**
+  - Simple form with name field
+  - Form validation and error handling
+  - Cancel/Save actions
+
+#### 3. **Edit Category** - `/admin/categories/edit/:id`
+- **Features:**
+  - Pre-populated form with existing data
+  - Update confirmation
+  - Navigation back to list
+
+#### 4. **View Category** - `/admin/categories/view/:id`
+- **Features:**
+  - Complete category information display
+  - Metadata and technical information
+  - Quick action buttons (Edit, Delete)
+  - Professional layout with cards
+  - Responsive design
+
 ## 🎨 Design Features
 
 ### Professional UI Components
@@ -150,10 +188,16 @@ src/pages/admin/
 - `/admin/services/edit/:id` - Edit service
 - `/admin/services/view/:id` - View service details
 
+### Admin Routes - Categories
+- `/admin/categories` - Categories list/table
+- `/admin/categories/create` - Create new category
+- `/admin/categories/edit/:id` - Edit category
+- `/admin/categories/view/:id` - View category details
+
 ## 🛠️ Technical Implementation
 
 ### State Management
-- **Custom Hooks:** `useProducts`, `useServices` for data management
+- **Custom Hooks:** `useProducts`, `useServices`, `useCategories` for data management
 - **CRUD Operations:** Create, Read, Update, Delete with error handling
 - **Loading States:** Proper loading indicators throughout
 - **Error Boundaries:** Graceful error handling and recovery
@@ -199,9 +243,7 @@ src/pages/admin/
 ## 🚀 Future Enhancements
 
 ### Planned Features
-1. **Categories CRUD:** Complete category management system
-2. **Service Types CRUD:** Service type management
-3. **Bulk Operations:** Select multiple items for bulk actions
+1. **Bulk Operations:** Select multiple items for bulk actions
 4. **Advanced Filters:** More filtering options in list views
 5. **Export Functionality:** Export data to CSV/PDF
 6. **Image Gallery:** Multiple images per product/service

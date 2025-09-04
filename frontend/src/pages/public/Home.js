@@ -77,7 +77,7 @@ export default function Home() {
 
       {/* Contact Section */}
       <section className="contact-section">
-        <div className="container">
+        <div className="container" >
           <div className="contact-info">
             <h3>🔥 NOUS CONTACTER</h3>
             <h2>Besoin plus d'informations ?</h2>

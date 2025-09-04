@@ -4,23 +4,20 @@ import ServiceCard from '../../components/cards/ServiceCard';
 import Carousel from '../../components/common/Carousel';
 import Loading from '../../components/common/Loading';
 import ErrorMessage from '../../components/common/ErrorMessage';
-import { useServices, useServiceTypes } from '../../hooks/useServices';
+import { useServices } from '../../hooks/useServices';
 import './Services.css';
 
 const Services = () => {
   const { services, loading, error, refetch } = useServices();
-  const { serviceTypes } = useServiceTypes();
-  const [selectedType, setSelectedType] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'carousel'
 
   const filteredServices = services.filter(service => {
-    const matchesType = !selectedType || service.type_id === parseInt(selectedType);
-    const matchesSearch = !searchTerm || 
+    const matchesSearch = !searchTerm ||
       service.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
       service.description.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    return matchesType && matchesSearch;
+
+    return matchesSearch;
   });
 
   const handleServiceClick = (service) => {
@@ -50,23 +47,6 @@ const Services = () => {
               />
             </div>
             
-            <div className="type-filters">
-              <button
-                className={`filter-btn ${selectedType === '' ? 'active' : ''}`}
-                onClick={() => setSelectedType('')}
-              >
-                Tous les services
-              </button>
-              {serviceTypes.map(type => (
-                <button
-                  key={type.id}
-                  className={`filter-btn ${selectedType === type.id.toString() ? 'active' : ''}`}
-                  onClick={() => setSelectedType(type.id.toString())}
-                >
-                  {type.nom}
-                </button>
-              ))}
-            </div>
           </div>
 
           {/* View Controls */}
@@ -74,9 +54,6 @@ const Services = () => {
             <div className="results-info">
               <p>
                 {filteredServices.length} service{filteredServices.length !== 1 ? 's' : ''} trouvé{filteredServices.length !== 1 ? 's' : ''}
-                {selectedType && (
-                  <span> dans "{serviceTypes.find(t => t.id.toString() === selectedType)?.nom}"</span>
-                )}
                 {searchTerm && (
                   <span> pour "{searchTerm}"</span>
                 )}
@@ -149,17 +126,16 @@ const Services = () => {
                 <div className="no-results">
                   <h3>Aucun service trouvé</h3>
                   <p>
-                    {searchTerm || selectedType 
+                    {searchTerm
                       ? 'Essayez de modifier vos critères de recherche'
                       : 'Aucun service disponible pour le moment'
                     }
                   </p>
-                  {(searchTerm || selectedType) && (
-                    <button 
+                  {searchTerm && (
+                    <button
                       className="btn btn-primary"
                       onClick={() => {
                         setSearchTerm('');
-                        setSelectedType('');
                       }}
                     >
                       Voir tous les services

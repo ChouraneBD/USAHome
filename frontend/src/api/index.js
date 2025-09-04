@@ -36,8 +36,3 @@ export async function fetchServices() {
   const res = await fetch(`${API_BASE}/services`);
   return handleResponse(res);
 }
-
-export async function fetchTypesServices() {
-  const res = await fetch(`${API_BASE}/types-services`);
-  return handleResponse(res);
-}

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import Layout from '../../components/layout/Layout';
+import { useDevis } from '../../hooks/useDevis';
 import './Contact.css';
 
 const Contact = () => {
+  const { createDevis } = useDevis();
+  const [errors, setErrors] = useState({});
   const [contactForm, setContactForm] = useState({
     nom: '',
     email: '',
@@ -13,19 +16,33 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+    setSubmitMessage('');
+    setSubmitSuccess(false);
+
     try {
-      // Here you would typically send the form data to your backend
-      console.log('Contact form submitted:', contactForm);
+      // Prepare data in the format expected by the backend
+      const devisData = {
+        nom: contactForm.nom,
+        email: contactForm.email,
+        telephone: contactForm.telephone,
+        objet: contactForm.objet,
+        message: contactForm.message,
+        type_devis: contactForm.typeDevis
+      };
+
+      // Use the same pattern as services - call the hook's createDevis function
+      const result = await createDevis(devisData);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      setSubmitSuccess(true);
+      setSubmitMessage('Votre demande de devis a été envoyée avec succès! Nous vous contacterons bientôt.');
       
-      alert('Votre demande de devis a été envoyée avec succès! Nous vous contacterons bientôt.');
+      // Reset form on success
       setContactForm({
         nom: '',
         email: '',
@@ -34,8 +51,11 @@ const Contact = () => {
         message: '',
         typeDevis: 'service'
       });
+
     } catch (error) {
-      alert('Une erreur est survenue. Veuillez réessayer.');
+      console.error('Error submitting contact form:', error);
+      setSubmitSuccess(false);
+      setSubmitMessage(error.message || 'Une erreur est survenue lors de l\'envoi de votre demande.');
     } finally {
       setIsSubmitting(false);
     }
@@ -110,6 +130,19 @@ const Contact = () => {
               <div className="contact-form-card">
                 <h2>Demande de Devis</h2>
                 <p>Remplissez le formulaire ci-dessous et nous vous contacterons dans les plus brefs délais.</p>
+                
+                {submitMessage && (
+                  <div className={`submit-message ${submitSuccess ? 'success' : 'error'}`} style={{
+                    backgroundColor: submitSuccess ? '#d4edda' : '#f8d7da',
+                    border: `1px solid ${submitSuccess ? '#c3e6cb' : '#f5c6cb'}`,
+                    borderRadius: '4px',
+                    padding: '12px',
+                    margin: '10px 0',
+                    color: submitSuccess ? '#155724' : '#721c24'
+                  }}>
+                    {submitSuccess ? '✅' : '❌'} {submitMessage}
+                  </div>
+                )}
 
                 <form onSubmit={handleContactSubmit} className="contact-form">
                   <div className="form-group">
@@ -178,6 +211,8 @@ const Contact = () => {
                       required
                       placeholder="Objet de votre demande"
                     />
+                    {errors.objet &&
+                      <span className="error-message">{errors.objet}</span>}
                   </div>
 
                   <div className="form-group">
@@ -191,6 +226,8 @@ const Contact = () => {
                       required
                       placeholder="Décrivez votre projet en détail..."
                     ></textarea>
+                    {errors.message &&
+                      <span className="error-message">{errors.message}</span>}
                   </div>
 
                   <button 

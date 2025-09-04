@@ -25,7 +25,7 @@ const ServiceCard = ({ service, onClick }) => {
         <h4 className="service-name">{service.nom}</h4>
         <div className="service-details">
           <span className="price">{service.prix ? `${service.prix} €` : 'Sur devis'}</span>
-          <span className="category">{service.type?.nom || 'Non typé'}</span>
+          <span className="category">{service.type?.name || 'Non typé'}</span>
         </div>
       </div>
     </div>
