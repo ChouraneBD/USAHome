@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
-import ConnectionStatus from '../../components/common/ConnectionStatus';
-import NetworkDiagnostics from '../../components/common/NetworkDiagnostics';
 import './Auth.css';
 
 const Login = () => {
@@ -12,7 +10,6 @@ const Login = () => {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showDiagnostics, setShowDiagnostics] = useState(false);
 
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -29,52 +26,17 @@ const Login = () => {
     setError('');
     setLoading(true);
 
-    // Check network connectivity first
-    if (!navigator.onLine) {
-      setError('No internet connection. Please check your network and try again.');
-      setLoading(false);
-      return;
-    }
-
-    let retryCount = 0;
-    const maxRetries = 3;
-
-    const attemptLogin = async () => {
-      try {
-        const response = await login(formData);
-        if (response.success) {
-          navigate('/admin/dashboard');
-        }
-      } catch (err) {
-        console.error('Login error:', err);
-
-        // Handle specific error types
-        if (err.message.includes('401')) {
-          setError('Invalid email or password. Please check your credentials.');
-        } else if (err.message.includes('422')) {
-          setError('Please check your input data and try again.');
-        } else if (err.message.includes('NetworkError') || err.message.includes('Failed to fetch')) {
-          if (retryCount < maxRetries) {
-            retryCount++;
-            setError(`Connection failed. Retrying... (${retryCount}/${maxRetries})`);
-            setTimeout(() => attemptLogin(), 2000 * retryCount); // Exponential backoff
-            return;
-          } else {
-            setError('Unable to connect to the server. Please check your internet connection and ensure the server is running.');
-          }
-        } else if (err.message.includes('500')) {
-          setError('Server error occurred. Please try again later.');
-        } else if (err.message.includes('403') || err.message.includes('CORS')) {
-          setError('Access denied. Please contact support if this persists.');
-        } else {
-          setError(err.message || 'Login failed. Please try again.');
-        }
-      } finally {
-        setLoading(false);
+    try {
+      const response = await login(formData);
+      if (response.success) {
+        navigate('/admin/dashboard');
       }
-    };
-
-    await attemptLogin();
+    } catch (err) {
+      console.error('Login error:', err);
+      setError(err.message || 'Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -86,17 +48,6 @@ const Login = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
-          <div className="connection-info">
-            <ConnectionStatus showDetails={true} />
-            <button
-              type="button"
-              onClick={() => setShowDiagnostics(true)}
-              className="diagnostics-button"
-            >
-              🔧 Run Network Diagnostics
-            </button>
-          </div>
-
           {error && (
             <div className="auth-error">
               {error}
@@ -142,10 +93,6 @@ const Login = () => {
           <p>Don't have an account? <Link to="/register">Sign up</Link></p>
         </div>
       </div>
-
-      {showDiagnostics && (
-        <NetworkDiagnostics onClose={() => setShowDiagnostics(false)} />
-      )}
     </div>
   );
 };

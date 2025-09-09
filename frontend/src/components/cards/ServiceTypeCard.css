@@ -119,29 +119,357 @@
   transform: none;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* ===========================================
+   RESPONSIVE DESIGN
+   =========================================== */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .service-type-card {
+    padding: 28px;
+  }
+
+  .service-type-name {
+    font-size: 22px;
+  }
+
+  .service-type-description p {
+    font-size: 17px;
+  }
+
+  .services-count {
+    font-size: 15px;
+    padding: 5px 14px;
+  }
+
+  .btn-action {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+/* Medium screens (1024px to 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .service-type-card {
+    padding: 24px;
+  }
+
+  .service-type-name {
+    font-size: 20px;
+  }
+
+  .service-type-description p {
+    font-size: 16px;
+  }
+}
+
+/* Small tablets (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
   .service-type-card {
     padding: 20px;
   }
 
   .service-type-header {
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
+    margin-bottom: 14px;
   }
 
   .service-type-name {
     font-size: 18px;
   }
 
+  .service-type-description p {
+    font-size: 15px;
+  }
+
+  .services-count {
+    font-size: 13px;
+    padding: 4px 10px;
+  }
+
+  .service-type-footer {
+    padding-top: 14px;
+  }
+
+  .created-date {
+    font-size: 13px;
+  }
+
+  .btn-action {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+}
+
+/* Large phones (481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .service-type-card {
+    padding: 18px;
+    margin: 8px 0;
+  }
+
+  .service-type-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .service-type-name {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .service-type-stats {
+    align-self: flex-end;
+  }
+
+  .service-type-description {
+    margin-bottom: 16px;
+  }
+
+  .service-type-description p {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .services-count {
+    font-size: 13px;
+    padding: 4px 10px;
+  }
+
   .service-type-footer {
     flex-direction: column;
     gap: 12px;
     align-items: flex-start;
+    padding-top: 14px;
+  }
+
+  .service-type-meta {
+    width: 100%;
+  }
+
+  .created-date {
+    font-size: 13px;
   }
 
   .service-type-actions {
     align-self: flex-end;
+    gap: 6px;
+  }
+
+  .btn-action {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+/* Small phones (360px to 480px) */
+@media (max-width: 480px) {
+  .service-type-card {
+    padding: 16px;
+    margin: 6px 0;
+    border-radius: 10px;
+  }
+
+  .service-type-header {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .service-type-name {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .service-type-description {
+    margin-bottom: 14px;
+  }
+
+  .service-type-description p {
+    font-size: 14px;
+  }
+
+  .services-count {
+    font-size: 12px;
+    padding: 3px 8px;
+  }
+
+  .service-type-footer {
+    gap: 10px;
+    padding-top: 12px;
+  }
+
+  .created-date {
+    font-size: 12px;
+  }
+
+  .service-type-actions {
+    gap: 4px;
+  }
+
+  .btn-action {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Extra small phones (below 360px) */
+@media (max-width: 359px) {
+  .service-type-card {
+    padding: 14px;
+    margin: 4px 0;
+    border-radius: 8px;
+  }
+
+  .service-type-header {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .service-type-name {
+    font-size: 15px;
+  }
+
+  .service-type-description p {
+    font-size: 13px;
+  }
+
+  .services-count {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+
+  .created-date {
+    font-size: 11px;
+  }
+
+  .btn-action {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    padding: 6px;
+  }
+}
+
+/* ===========================================
+   TOUCH-FRIENDLY ENHANCEMENTS
+   =========================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  .service-type-card {
+    margin: 12px 0;
+  }
+
+  .service-type-card:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .service-type-card:active {
+    transform: scale(0.98);
+  }
+
+  .btn-action {
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 8px;
+  }
+
+  .btn-edit:active {
+    background: rgba(0, 123, 255, 0.2);
+    transform: scale(0.95);
+  }
+
+  .btn-delete:active:not(:disabled) {
+    background: rgba(220, 53, 69, 0.2);
+    transform: scale(0.95);
+  }
+
+  .btn-delete:disabled {
+    opacity: 0.3;
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY ENHANCEMENTS
+   =========================================== */
+
+.service-type-card:focus-within {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+.btn-action:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .service-type-card {
+    border: 2px solid;
+  }
+
+  .services-count {
+    border: 1px solid;
+  }
+
+  .btn-action {
+    border: 2px solid;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .service-type-card,
+  .btn-action {
+    transition: none;
+  }
+
+  .service-type-card:hover {
+    transform: none;
+  }
+
+  .btn-edit:hover,
+  .btn-delete:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .service-type-card {
+    box-shadow: none;
+    border: 1px solid #000;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .service-type-name {
+    color: #000;
+  }
+
+  .service-type-description p {
+    color: #000;
+  }
+
+  .services-count {
+    background: #000;
+    color: white;
+    border: 1px solid #000;
+  }
+
+  .created-date {
+    color: #000;
+  }
+
+  .btn-action {
+    display: none;
   }
 }

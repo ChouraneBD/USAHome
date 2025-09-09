@@ -1,26 +1,56 @@
-/* Layout Styles */
+/* ===========================================
+   LAYOUT STYLES
+   =========================================== */
+
 .layout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .main-content {
   flex: 1;
   width: 100%;
+  position: relative;
 }
 
 .main-content.with-header {
   margin-top: 80px; /* Account for fixed header */
 }
 
+/* ===========================================
+   CONTAINER SYSTEM
+   =========================================== */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Common spacing utilities */
+.container-sm {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container-lg {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===========================================
+   SECTION SPACING
+   =========================================== */
+
 .section {
   padding: 80px 0;
 }
@@ -33,7 +63,10 @@
   padding: 120px 0;
 }
 
-/* Text utilities */
+/* ===========================================
+   TEXT UTILITIES
+   =========================================== */
+
 .text-center {
   text-align: center;
 }
@@ -45,6 +78,10 @@
 .text-right {
   text-align: right;
 }
+
+/* ===========================================
+   SPACING UTILITIES
+   =========================================== */
 
 /* Margin utilities */
 .mb-0 { margin-bottom: 0; }
@@ -60,3 +97,219 @@
 .mt-3 { margin-top: 1rem; }
 .mt-4 { margin-top: 1.5rem; }
 .mt-5 { margin-top: 3rem; }
+
+.pb-0 { padding-bottom: 0; }
+.pb-1 { padding-bottom: 0.25rem; }
+.pb-2 { padding-bottom: 0.5rem; }
+.pb-3 { padding-bottom: 1rem; }
+.pb-4 { padding-bottom: 1.5rem; }
+.pb-5 { padding-bottom: 3rem; }
+
+.pt-0 { padding-top: 0; }
+.pt-1 { padding-top: 0.25rem; }
+.pt-2 { padding-top: 0.5rem; }
+.pt-3 { padding-top: 1rem; }
+.pt-4 { padding-top: 1.5rem; }
+.pt-5 { padding-top: 3rem; }
+
+/* ===========================================
+   RESPONSIVE DESIGN
+   =========================================== */
+
+/* Large screens (1440px and up) */
+@media (min-width: 1440px) {
+  .container { max-width: 1400px; padding: 0 30px; }
+  .container-lg { max-width: 1600px; padding: 0 30px; }
+  .section { padding: 100px 0; }
+  .section-lg { padding: 150px 0; }
+}
+
+/* Large screens (1200px to 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .container { padding: 0 25px; }
+  .section { padding: 90px 0; }
+  .section-lg { padding: 130px 0; }
+  .main-content.with-header { margin-top: 85px; }
+}
+
+/* Medium screens (1024px to 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .container { padding: 0 20px; }
+  .section { padding: 70px 0; }
+  .section-lg { padding: 100px 0; }
+  .main-content.with-header { margin-top: 75px; }
+}
+
+/* Small tablets (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container { padding: 0 16px; }
+  .section { padding: 60px 0; }
+  .section-sm { padding: 35px 0; }
+  .section-lg { padding: 80px 0; }
+  .main-content.with-header { margin-top: 70px; }
+
+  /* Adjust spacing utilities for tablets */
+  .mb-5 { margin-bottom: 2.5rem; }
+  .mt-5 { margin-bottom: 2.5rem; }
+  .pb-5 { padding-bottom: 2.5rem; }
+  .pt-5 { padding-bottom: 2.5rem; }
+}
+
+/* Large phones (481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .container { padding: 0 12px; }
+  .section { padding: 50px 0; }
+  .section-sm { padding: 30px 0; }
+  .section-lg { padding: 60px 0; }
+  .main-content.with-header { margin-top: 65px; }
+
+  /* Mobile spacing adjustments */
+  .mb-3 { margin-bottom: 0.75rem; }
+  .mb-4 { margin-bottom: 1rem; }
+  .mb-5 { margin-bottom: 1.5rem; }
+  .mt-3 { margin-top: 0.75rem; }
+  .mt-4 { margin-top: 1rem; }
+  .mt-5 { margin-top: 1.5rem; }
+  .pb-3 { padding-bottom: 0.75rem; }
+  .pb-4 { padding-bottom: 1rem; }
+  .pb-5 { padding-bottom: 1.5rem; }
+  .pt-3 { padding-top: 0.75rem; }
+  .pt-4 { padding-top: 1rem; }
+  .pt-5 { padding-top: 1.5rem; }
+}
+
+/* Small phones (360px to 480px) */
+@media (max-width: 480px) {
+  .container { padding: 0 10px; }
+  .section { padding: 40px 0; }
+  .section-sm { padding: 25px 0; }
+  .section-lg { padding: 50px 0; }
+  .main-content.with-header { margin-top: 60px; }
+
+  /* Compact spacing for small screens */
+  .mb-2 { margin-bottom: 0.375rem; }
+  .mb-3 { margin-bottom: 0.625rem; }
+  .mb-4 { margin-bottom: 0.875rem; }
+  .mb-5 { margin-bottom: 1.25rem; }
+  .mt-2 { margin-top: 0.375rem; }
+  .mt-3 { margin-top: 0.625rem; }
+  .mt-4 { margin-top: 0.875rem; }
+  .mt-5 { margin-top: 1.25rem; }
+  .pb-2 { padding-bottom: 0.375rem; }
+  .pb-3 { padding-bottom: 0.625rem; }
+  .pb-4 { padding-bottom: 0.875rem; }
+  .pb-5 { padding-bottom: 1.25rem; }
+  .pt-2 { padding-top: 0.375rem; }
+  .pt-3 { padding-top: 0.625rem; }
+  .pt-4 { padding-top: 0.875rem; }
+  .pt-5 { padding-top: 1.25rem; }
+}
+
+/* Extra small phones (below 360px) */
+@media (max-width: 359px) {
+  .container { padding: 0 8px; }
+  .section { padding: 30px 0; }
+  .section-sm { padding: 20px 0; }
+  .section-lg { padding: 40px 0; }
+  .main-content.with-header { margin-top: 55px; }
+
+  /* Minimal spacing for very small screens */
+  .mb-1 { margin-bottom: 0.125rem; }
+  .mb-2 { margin-bottom: 0.25rem; }
+  .mb-3 { margin-bottom: 0.5rem; }
+  .mb-4 { margin-bottom: 0.75rem; }
+  .mb-5 { margin-bottom: 1rem; }
+  .mt-1 { margin-top: 0.125rem; }
+  .mt-2 { margin-top: 0.25rem; }
+  .mt-3 { margin-top: 0.5rem; }
+  .mt-4 { margin-top: 0.75rem; }
+  .mt-5 { margin-top: 1rem; }
+}
+
+/* ===========================================
+   TOUCH-FRIENDLY ENHANCEMENTS
+   =========================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  .section { padding: 60px 0; }
+  .section-sm { padding: 30px 0; }
+  .section-lg { padding: 80px 0; }
+
+  /* Ensure minimum touch targets */
+  .section > * {
+    margin-bottom: 16px;
+  }
+
+  .section > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY ENHANCEMENTS
+   =========================================== */
+
+/* Focus management for keyboard navigation */
+.layout:focus-within {
+  outline: none;
+}
+
+/* Skip to main content link (for screen readers) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .layout {
+    border: 1px solid;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .layout * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .layout {
+    min-height: auto;
+  }
+
+  .main-content.with-header {
+    margin-top: 0;
+  }
+
+  .section {
+    padding: 20px 0;
+    break-inside: avoid;
+  }
+}
+
+/* ===========================================
+   LANDSCAPE ORIENTATION ADJUSTMENTS
+   =========================================== */
+
+@media (max-width: 767px) and (orientation: landscape) {
+  .section { padding: 30px 0; }
+  .section-sm { padding: 20px 0; }
+  .section-lg { padding: 40px 0; }
+  .main-content.with-header { margin-top: 50px; }
+}

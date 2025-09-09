@@ -107,61 +107,373 @@
   margin: 0;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
+/* ===========================================
+   RESPONSIVE DESIGN
+   =========================================== */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .carousel-arrow {
+    width: 55px;
+    height: 55px;
+    font-size: 26px;
+  }
+
+  .carousel-arrow-prev {
+    left: 20px;
+  }
+
+  .carousel-arrow-next {
+    right: 20px;
+  }
+
+  .carousel-dots {
+    margin-top: 25px;
+  }
+
+  .carousel-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  .carousel-empty {
+    padding: 80px 20px;
+  }
+
+  .carousel-empty p {
+    font-size: 18px;
+  }
+}
+
+/* Medium screens (1024px to 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .carousel-arrow {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  .carousel-arrow-prev {
+    left: 18px;
+  }
+
+  .carousel-arrow-next {
+    right: 18px;
+  }
+
+  .carousel-dots {
+    margin-top: 22px;
+  }
+
+  .carousel-dot {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+/* Small tablets (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .carousel-item {
+    padding: 0 6px;
+  }
+
   .carousel-arrow {
     width: 45px;
     height: 45px;
     font-size: 20px;
   }
-  
+
   .carousel-arrow-prev {
-    left: 10px;
+    left: 12px;
   }
-  
+
   .carousel-arrow-next {
-    right: 10px;
+    right: 12px;
+  }
+
+  .carousel-dots {
+    margin-top: 18px;
+    gap: 10px;
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .carousel-empty {
+    padding: 50px 20px;
+  }
+
+  .carousel-empty p {
+    font-size: 16px;
+  }
+
+  .carousel-loading {
+    height: 250px;
   }
 }
 
-@media (max-width: 768px) {
+/* Large phones (481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
   .carousel-item {
-    padding: 0 5px;
+    padding: 0 4px;
   }
-  
+
   .carousel-arrow {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     font-size: 18px;
   }
-  
+
   .carousel-arrow-prev {
-    left: 5px;
+    left: 8px;
   }
-  
+
   .carousel-arrow-next {
-    right: 5px;
+    right: 8px;
   }
-  
+
   .carousel-dots {
-    margin-top: 15px;
+    margin-top: 16px;
+    gap: 8px;
   }
-  
+
+  .carousel-dot {
+    width: 11px;
+    height: 11px;
+  }
+
+  .carousel-empty {
+    padding: 45px 16px;
+  }
+
+  .carousel-empty p {
+    font-size: 15px;
+  }
+
+  .carousel-loading {
+    height: 220px;
+  }
+
+  /* Hide arrows on smaller screens for cleaner look */
+  .carousel-arrow {
+    display: none;
+  }
+
+  /* Make dots more prominent for touch */
+  .carousel-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  .carousel-dot.active {
+    transform: scale(1.4);
+  }
+}
+
+/* Small phones (360px to 480px) */
+@media (max-width: 480px) {
+  .carousel-container {
+    border-radius: 8px;
+  }
+
+  .carousel-item {
+    padding: 0 2px;
+  }
+
+  .carousel-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+    display: none; /* Hide arrows on very small screens */
+  }
+
+  .carousel-dots {
+    margin-top: 14px;
+    gap: 6px;
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .carousel-dot.active {
+    transform: scale(1.3);
+  }
+
+  .carousel-empty {
+    padding: 40px 12px;
+  }
+
+  .carousel-empty p {
+    font-size: 14px;
+  }
+
+  .carousel-loading {
+    height: 200px;
+  }
+}
+
+/* Extra small phones (below 360px) */
+@media (max-width: 359px) {
+  .carousel-item {
+    padding: 0 1px;
+  }
+
+  .carousel-dots {
+    margin-top: 12px;
+    gap: 5px;
+  }
+
   .carousel-dot {
     width: 10px;
     height: 10px;
   }
+
+  .carousel-empty {
+    padding: 35px 10px;
+  }
+
+  .carousel-empty p {
+    font-size: 13px;
+  }
+
+  .carousel-loading {
+    height: 180px;
+  }
 }
 
-@media (max-width: 480px) {
+/* ===========================================
+   TOUCH-FRIENDLY ENHANCEMENTS
+   =========================================== */
+
+@media (hover: none) and (pointer: coarse) {
   .carousel-arrow {
-    width: 35px;
-    height: 35px;
-    font-size: 16px;
+    min-width: 44px;
+    min-height: 44px;
+    display: none; /* Hide arrows on touch devices */
   }
-  
+
+  .carousel-dot {
+    min-width: 44px;
+    min-height: 44px;
+    width: 16px;
+    height: 16px;
+    margin: 0 4px;
+  }
+
+  .carousel:hover .carousel-arrow {
+    opacity: 0;
+  }
+
+  .carousel-arrow {
+    opacity: 0;
+  }
+
+  .carousel-dots {
+    margin-top: 20px;
+  }
+
+  .carousel-dot:hover {
+    transform: scale(1.2);
+  }
+
+  .carousel-dot.active {
+    transform: scale(1.4);
+  }
+
+  .carousel-dot:active {
+    transform: scale(1.6);
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY ENHANCEMENTS
+   =========================================== */
+
+.carousel-arrow:focus,
+.carousel-dot:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .carousel-arrow {
+    border: 2px solid;
+    background: white;
+  }
+
+  .carousel-dot {
+    border: 2px solid;
+  }
+
+  .carousel-dot.active {
+    background: black;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track,
+  .carousel-arrow,
+  .carousel-dot,
   .carousel-item {
-    padding: 0 3px;
+    transition: none;
+    animation: none;
+  }
+
+  .carousel-arrow:hover,
+  .carousel-dot:hover,
+  .carousel-dot.active {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .carousel {
+    display: block;
+  }
+
+  .carousel-track {
+    display: block;
+    transform: none;
+  }
+
+  .carousel-item {
+    display: block;
+    padding: 10px 0;
+    break-inside: avoid;
+  }
+
+  .carousel-arrow,
+  .carousel-dots {
+    display: none;
+  }
+
+  .carousel-empty {
+    display: none;
+  }
+}
+
+/* ===========================================
+   LANDSCAPE ORIENTATION ADJUSTMENTS
+   =========================================== */
+
+@media (max-width: 767px) and (orientation: landscape) {
+  .carousel-loading {
+    height: 150px;
+  }
+
+  .carousel-empty {
+    padding: 25px 16px;
+  }
+
+  .carousel-dots {
+    margin-top: 10px;
   }
 }
 

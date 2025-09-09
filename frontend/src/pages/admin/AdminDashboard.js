@@ -164,8 +164,8 @@ const AdminDashboard = () => {
         </div>
 
         {/* Quick Stats */}
-        <div className="stats-grid">
-          <div className="stat-card primary">
+        <div className="stats-grid" >
+          <div className="stat-card primary text">
             <div className="stat-icon">📋</div>
             <div className="stat-content">
               <h3>{stats.devis.total}</h3>
@@ -198,16 +198,7 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          <div className="stat-card warning">
-            <div className="stat-icon">⚡</div>
-            <div className="stat-content">
-              <h3>{stats.devis.en_cours}</h3>
-              <p>En cours</p>
-            </div>
-            <div className="stat-trend">
-              <span className="in-progress">À traiter</span>
-            </div>
-          </div>
+         
         </div>
 
         <div className="dashboard-content">

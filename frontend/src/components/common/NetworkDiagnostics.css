@@ -150,27 +150,355 @@
   border-color: #adb5bd;
 }
 
-/* Responsive design */
+/* ===========================================
+   RESPONSIVE DESIGN
+   =========================================== */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .network-diagnostics-modal {
+    max-width: 600px;
+  }
+
+  .diagnostics-header {
+    padding: 24px 28px;
+  }
+
+  .diagnostics-header h2 {
+    font-size: 22px;
+  }
+
+  .diagnostics-content {
+    padding: 28px;
+  }
+
+  .diagnostics-section h3 {
+    font-size: 17px;
+  }
+
+  .diagnostic-item {
+    padding: 10px 0;
+    font-size: 15px;
+  }
+
+  .recommendations-list li {
+    font-size: 15px;
+  }
+
+  .diagnostics-actions {
+    padding: 24px 28px;
+  }
+
+  .retry-button,
+  .close-button-secondary {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
+
+/* Medium screens (1024px to 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .network-diagnostics-modal {
+    max-width: 550px;
+  }
+
+  .diagnostics-header h2 {
+    font-size: 21px;
+  }
+}
+
+/* Small tablets (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .network-diagnostics-modal {
+    max-width: 500px;
+    width: 90%;
+  }
+
+  .diagnostics-header {
+    padding: 20px 24px;
+  }
+
+  .diagnostics-header h2 {
+    font-size: 19px;
+  }
+
+  .diagnostics-content {
+    padding: 24px;
+  }
+
+  .diagnostics-section h3 {
+    font-size: 16px;
+  }
+
+  .diagnostic-item {
+    padding: 8px 0;
+  }
+
+  .diagnostics-actions {
+    padding: 20px 24px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .diagnostics-actions button {
+    width: 100%;
+  }
+}
+
+/* Large phones (481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .network-diagnostics-modal {
+    width: 92%;
+    margin: 20px;
+    max-height: 85vh;
+  }
+
+  .diagnostics-header {
+    padding: 18px 22px;
+  }
+
+  .diagnostics-header h2 {
+    font-size: 18px;
+  }
+
+  .diagnostics-content {
+    padding: 22px;
+  }
+
+  .diagnostics-section {
+    margin-bottom: 20px;
+  }
+
+  .diagnostics-section h3 {
+    font-size: 15px;
+  }
+
+  .diagnostic-item {
+    padding: 6px 0;
+    font-size: 14px;
+  }
+
+  .recommendations-list li {
+    font-size: 13px;
+    padding: 6px 0;
+  }
+
+  .diagnostics-actions {
+    padding: 18px 22px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .diagnostics-actions button {
+    width: 100%;
+    padding: 12px 20px;
+  }
+}
+
+/* Small phones (360px to 480px) */
 @media (max-width: 480px) {
   .network-diagnostics-modal {
     width: 95%;
-    margin: 20px;
+    margin: 15px;
+    max-height: 90vh;
+    border-radius: 10px;
   }
 
   .diagnostics-header {
     padding: 16px 20px;
   }
 
+  .diagnostics-header h2 {
+    font-size: 17px;
+  }
+
+  .close-button {
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+  }
+
   .diagnostics-content {
     padding: 20px;
   }
 
-  .diagnostics-actions {
-    padding: 16px 20px;
-    flex-direction: column;
+  .diagnostics-section {
+    margin-bottom: 18px;
   }
 
-  .diagnostics-actions button {
-    width: 100%;
+  .diagnostics-section h3 {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .diagnostic-item {
+    padding: 5px 0;
+    font-size: 13px;
+  }
+
+  .diagnostic-item span:first-child {
+    font-size: 12px;
+  }
+
+  .recommendations-list li {
+    font-size: 12px;
+    padding: 5px 0;
+  }
+
+  .diagnostics-actions {
+    padding: 16px 20px;
+    gap: 6px;
+  }
+
+  .retry-button,
+  .close-button-secondary {
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+}
+
+/* Extra small phones (below 360px) */
+@media (max-width: 359px) {
+  .network-diagnostics-modal {
+    width: 98%;
+    margin: 10px;
+    border-radius: 8px;
+  }
+
+  .diagnostics-header {
+    padding: 14px 18px;
+  }
+
+  .diagnostics-header h2 {
+    font-size: 16px;
+  }
+
+  .close-button {
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+  }
+
+  .diagnostics-content {
+    padding: 18px;
+  }
+
+  .diagnostics-section h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .diagnostic-item {
+    padding: 4px 0;
+    font-size: 12px;
+  }
+
+  .recommendations-list li {
+    font-size: 11px;
+    padding: 4px 0;
+  }
+
+  .diagnostics-actions {
+    padding: 14px 18px;
+  }
+
+  .retry-button,
+  .close-button-secondary {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+/* ===========================================
+   TOUCH-FRIENDLY ENHANCEMENTS
+   =========================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  .close-button,
+  .retry-button,
+  .close-button-secondary {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .retry-button,
+  .close-button-secondary {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  .network-diagnostics-modal {
+    max-height: 85vh;
+  }
+
+  .close-button:hover,
+  .retry-button:hover,
+  .close-button-secondary:hover {
+    transform: none;
+  }
+
+  .close-button:active {
+    background: #e9ecef;
+  }
+
+  .retry-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+  }
+
+  .close-button-secondary:active {
+    background: #e9ecef;
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY ENHANCEMENTS
+   =========================================== */
+
+.close-button:focus,
+.retry-button:focus,
+.close-button-secondary:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .network-diagnostics-modal {
+    border: 2px solid;
+  }
+
+  .diagnostics-header {
+    border-bottom: 2px solid;
+  }
+
+  .diagnostics-actions {
+    border-top: 2px solid;
+  }
+
+  .retry-button,
+  .close-button-secondary {
+    border: 2px solid;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .close-button,
+  .retry-button,
+  .close-button-secondary {
+    transition: none;
+  }
+
+  .retry-button:hover {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .network-diagnostics-overlay {
+    display: none !important;
   }
 }
